@@ -141,8 +141,9 @@ main {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 2rem;
 }
 
 .product-card {
@@ -423,86 +424,103 @@ footer {
     margin: 1rem 0;
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
 .product-item {
     background: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .product-image {
+    width: 100%;
     height: 200px;
     overflow: hidden;
+    position: relative;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.product-item:hover .product-image img {
+    transform: scale(1.05);
 }
 
 .product-info {
-    padding: 1rem;
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
 .product-info h3 {
-    margin-bottom: 0.5rem;
+    margin: 0;
     font-size: 1.2rem;
+    color: #333;
 }
 
 .product-info p {
-    margin-bottom: 0.5rem;
+    margin: 0;
     color: #666;
+    font-size: 0.9rem;
 }
 
 .product-status {
     display: flex;
     justify-content: space-between;
-    margin: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+.product-status span {
     font-size: 0.9rem;
     color: #666;
 }
 
 .product-price {
-    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
 }
 
 .product-price .original {
     color: #999;
     text-decoration: line-through;
-    margin-right: 1rem;
+    font-size: 0.9rem;
 }
 
 .product-price .current {
-    color: #ff6b6b;
-    font-weight: bold;
+    color: #e74c3c;
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
 .inquiry-btn {
-    display: block;
-    width: 100%;
-    padding: 0.8rem;
-    background: #1a1a1a;
-    color: #fff;
+    background: #e74c3c;
+    color: white;
     border: none;
+    padding: 0.8rem;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
 }
 
 .inquiry-btn:hover {
-    background: #333;
+    background: #c0392b;
 }
 
 /* 響應式設計 */
@@ -523,4 +541,77 @@ footer {
     .product-search input {
         width: 100%;
     }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+    .product-info {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .product-image {
+        height: 160px;
+    }
+}
+
+/* 圖片放大模態框樣式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding: 20px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close:hover {
+    color: #bbb;
+}
+
+/* 產品圖片樣式調整 */
+.product-image img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.product-image img:hover {
+    transform: scale(1.05);
 }
