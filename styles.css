@@ -295,6 +295,40 @@ footer {
         align-items: center;
         justify-content: center;
     }
+
+    .products-page {
+        flex-direction: column;
+        padding: 1rem 2vw;
+        gap: 1rem;
+    }
+
+    .product-sidebar {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    .product-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .product-categories li {
+        flex: 1 1 40%;
+        min-width: 100px;
+        max-width: 180px;
+    }
+
+    .product-categories a {
+        text-align: center;
+        padding: 0.5rem 0.2rem;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -627,6 +661,7 @@ footer {
     }
 
     .product-sidebar {
+        display: block;
         width: 100%;
         margin-bottom: 1rem;
         box-shadow: none;
